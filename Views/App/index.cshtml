@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "HomePage";
+}
+<h1> Welcome to Ace School Portal </h1>
+<div class="product-info">
+    <button class="btn btn-secondary"><a asp-controller="App" asp-action="NewRegistration" class="nav-link">New Registration</a></button>
+    <button class="btn btn-secondary"> Login </button>
+    <button class="btn btn-info">New Registration</button>
+    <button class="btn btn-secondary"><a asp-controller="App" asp-action="UserManagement" class="nav-link">User Management</a></button>
+    
+    <button class="btn btn-secondary"><a asp-controller="Student" asp-action="StudentManagement" class="nav-link">Student Management</a></button>
+</div>
+<div>
+    <div id="LoginToggle">Login</div>
+    <form class="popup-form">
+        <div>
+            <label>Username</label>
+            <input />
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" />
+        </div>
+        <div>
+            <input type="checkbox" />
+            <label>Remember me</label>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "SchoolConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SchoolPortalDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
