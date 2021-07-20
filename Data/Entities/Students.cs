@@ -7,7 +7,7 @@ namespace AceSchoolPortal.Data.Entities
 {
     public class Students
     {
-        public int ID { get; set; }
+        public int StudentId { get; set; }
         public string FirstName { get; set; }
         public string FathersName { get; set; }
         public string MothersName { get; set; }

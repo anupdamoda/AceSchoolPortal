@@ -25,7 +25,8 @@ namespace AceSchoolPortal.Data
             modelBuilder.Entity<Users>()
                 .HasKey(u => new { u.UserName });
             modelBuilder.Entity<Students>()
-                .HasKey(s => new { s.DOB });
+                .HasKey(s => new { s.StudentId });
+                
             //.HasData()
         }
 
