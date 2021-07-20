@@ -1,0 +1,101 @@
+﻿@model Students
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm())
+{
+
+<div class="form-horizontal">
+    <h4>Student</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.FirstName)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="FathersName">Father's Name:</label>
+            <input asp-for="FathersName" type="text" class="form-control">
+            <span asp-validation-for="FathersName"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="DOJ">Date of Joining:</label>
+            <input asp-for="DOJ" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
+            <span asp-validation-for="DOJ"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="MothersName">Mother's Name:</label>
+            <input asp-for="MothersName" type="text" class="form-control">
+            <span asp-validation-for="MothersName"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="Grade">Grade:</label>
+            <input asp-for="Grade" type="text" class="form-control">
+            <span asp-validation-for="Grade"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="DOB">Date of Birth:</label>
+            <input asp-for="DOB" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
+            <span asp-validation-for="DOB"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="BloodGroup">Blood Group:</label>
+            <input asp-for="BloodGroup" type="text" class="form-control">
+            <span asp-validation-for="BloodGroup"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="EmergencyContact">Emergency Contact:</label>
+            <input asp-for="EmergencyContact" type="number" class="form-control">
+            <span asp-validation-for="EmergencyContact"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="Address">Addreses:</label>
+            <input asp-for="Address" type="text" class="form-control">
+            <span asp-validation-for="Address"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="StudentId">StudentId:</label>
+            <span asp-for="StudentId" type="text" class="form-control"></span>
+            <span asp-validation-for="StudentId"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

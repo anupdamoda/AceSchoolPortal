@@ -33,10 +33,10 @@
                     <td>  @p.BloodGroup </td>
                     <td>  @p.DOJ.ToString("dd/MM/yyyy") </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = p.DOB })
+                        @Html.ActionLink("Edit", "Edit", new { id = p.StudentId })
                     </td>
                     <td>
-                        @Html.ActionLink("Delete", "Delete", new { id = p.DOB })
+                        @Html.ActionLink("Delete", "Delete", new { id = p.StudentId })
                     </td>
                 </tr>
                 }

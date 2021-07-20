@@ -46,6 +46,7 @@ namespace AceSchoolPortal.Controllers
                 };
 
                 _repository.AddEntity(newStudent);
+
                 _repository.SaveAll();
             }
             else
@@ -65,6 +66,50 @@ namespace AceSchoolPortal.Controllers
             //select p;
 
             return View(results.ToList());
+        }
+
+        public IActionResult Edit(int id)
+        {
+            //here, get the user from the database in the real application
+            //getting a user from collection for demo purpose
+            var usr = _repository.GetAllStudents().Where(s => s.StudentId == id).FirstOrDefault();
+
+            return View(usr);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Students std)
+        {
+            //update user in DB using EntityFramework in real-life application
+
+            //update list by removing old user and adding updated user for demo purpose
+            var student = _repository.GetAllStudents().Where(s => s.StudentId == std.StudentId).FirstOrDefault();
+            _repository.RemoveEntity(student);
+            _repository.AddEntity(std);
+            _repository.SaveAll();
+
+            return RedirectToAction("StudentManagement");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            //here, get the student from the database in the real application
+            //getting a student from collection for demo purpose
+            var std = _repository.GetAllStudents().Where(s => s.StudentId == id).FirstOrDefault();
+            return View(std);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Students std)
+        {
+            //update student in DB using EntityFramework in real-life application
+
+            //update list by removing old student and adding updated student for demo purpose
+            var user = _repository.GetAllStudents().Where(s => s.StudentId == std.StudentId).FirstOrDefault();
+            _repository.RemoveEntity(user);
+            _repository.SaveAll();
+
+            return RedirectToAction("StudentManagement");
         }
 
     }
