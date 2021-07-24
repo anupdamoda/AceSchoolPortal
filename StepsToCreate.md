@@ -134,6 +134,12 @@ Extract Interface from Repository
 
 add the service in Startup 
 
+######Incase of failures during migration#####
+Verify if the failure is due to trying to create - already existing tables or its trying to add/drop columns to non-existent table
+solution that will help: delete the Migrations folder and delete the dbo._EFMigrationsHistory table 
+after that run the above commands of add and update
+
+
 # APIs
 
 Install Postman

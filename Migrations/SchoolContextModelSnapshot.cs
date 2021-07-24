@@ -19,16 +19,46 @@ namespace AceSchoolPortal.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Enrollments", b =>
+                {
+                    b.Property<int>("EnrollmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Grade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SubjectsSubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EnrollmentId");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectsSubjectId");
+
+                    b.ToTable("Enrollments");
+                });
+
             modelBuilder.Entity("AceSchoolPortal.Data.Entities.Students", b =>
                 {
-                    b.Property<DateTime>("DOB")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("StudentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BloodGroup")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DOJ")
                         .HasColumnType("datetime2");
@@ -48,12 +78,27 @@ namespace AceSchoolPortal.Migrations
                     b.Property<string>("MothersName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DOB");
+                    b.HasKey("StudentId");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Subjects", b =>
+                {
+                    b.Property<int>("SubjectId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Credits")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubjectId");
+
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("AceSchoolPortal.Data.Entities.Users", b =>
@@ -88,6 +133,26 @@ namespace AceSchoolPortal.Migrations
                     b.HasKey("UserName");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Enrollments", b =>
+                {
+                    b.HasOne("AceSchoolPortal.Data.Entities.Students", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AceSchoolPortal.Data.Entities.Subjects", null)
+                        .WithMany("Enrollments")
+                        .HasForeignKey("SubjectsSubjectId");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Subjects", b =>
+                {
+                    b.Navigation("Enrollments");
                 });
 #pragma warning restore 612, 618
         }

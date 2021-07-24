@@ -24,5 +24,9 @@ namespace AceSchoolPortal.ViewModels
         public string BloodGroup { get; set; }
         public string Address { get; set; }
         public string EmergencyContact { get; set; }
+        public ICollection<Enrollment> Enrollments
+        {
+            get; set;
+        }
     }
 }
