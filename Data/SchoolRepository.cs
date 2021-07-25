@@ -35,7 +35,7 @@ namespace AceSchoolPortal.Data
         public IEnumerable<Students> GetAllStudents()
         {
             return _ctx.Students
-                .OrderBy(u => u.FirstName)
+                .OrderBy(u => u.first_name)
                 .ToList();
         }
 

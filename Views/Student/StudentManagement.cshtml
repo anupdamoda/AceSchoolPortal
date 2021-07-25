@@ -16,7 +16,6 @@
                     <th> Father's Name </th>
                     <th> Date of Birth </th>
                     @*<th> Emergency Contact number </th>*@
-                    <th> Blood Group </th>
                     <th> Date of Joining </th>
                     <th style="color:darkcyan"> Update </th>
                     <th style="color:darkcyan"> Delete </th>
@@ -26,17 +25,16 @@
                 @foreach (var p in Model)
                 {
                 <tr>
-                    <td>  @p.FirstName </td>
-                    <td>  @p.FathersName </td>
-                    <td>  @p.DOB.ToString("dd/MM/yyyy") </td>
+                    <td>  @p.first_name </td>
+                    <td>  @p.last_name </td>
+                    <td>  @p.dob.ToString("dd/MM/yyyy") </td>
                     @*<td>  @p.EmergencyContact  </td>*@
-                    <td>  @p.BloodGroup </td>
-                    <td>  @p.DOJ.ToString("dd/MM/yyyy") </td>
+                    <td>  @p.enrollment_date.ToString("dd/MM/yyyy") </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = p.StudentId })
+                        @Html.ActionLink("Edit", "Edit", new { id = p.student_id })
                     </td>
                     <td>
-                        @Html.ActionLink("Delete", "Delete", new { id = p.StudentId })
+                        @Html.ActionLink("Delete", "Delete", new { id = p.student_id })
                     </td>
                 </tr>
                 }

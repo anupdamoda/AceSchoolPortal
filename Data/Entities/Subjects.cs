@@ -7,9 +7,8 @@ namespace AceSchoolPortal.Data.Entities
 {
     public class Subjects
     {
-        public int SubjectId { get; set; }
-        public string SubjectName { get; set; }
-        public int Credits { get; set; }
-        public ICollection<Enrollments> Enrollments { get; set; }
+        public int subject_id { get; set; }
+        public string subject_name { get; set; }
+        public DateTime created_at { get; set; }
     }
 }
