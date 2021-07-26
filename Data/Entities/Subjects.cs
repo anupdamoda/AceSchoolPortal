@@ -9,6 +9,7 @@ namespace AceSchoolPortal.Data.Entities
     {
         public int subject_id { get; set; }
         public string subject_name { get; set; }
+        public ICollection<ClassGrades> ClassGrades { get; set; }
         public DateTime created_at { get; set; }
     }
 }

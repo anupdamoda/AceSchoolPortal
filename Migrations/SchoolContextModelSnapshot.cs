@@ -26,6 +26,15 @@ namespace AceSchoolPortal.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Instructorsinstructor_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Studentsstudent_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Subjectssubject_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("class_grade_name")
                         .HasColumnType("nvarchar(max)");
 
@@ -37,6 +46,12 @@ namespace AceSchoolPortal.Migrations
 
                     b.HasKey("class_grade_id");
 
+                    b.HasIndex("Instructorsinstructor_id");
+
+                    b.HasIndex("Studentsstudent_id");
+
+                    b.HasIndex("Subjectssubject_id");
+
                     b.ToTable("ClassGrades");
                 });
 
@@ -47,6 +62,12 @@ namespace AceSchoolPortal.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Instructorsinstructor_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Studentsstudent_id")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("created_at")
                         .HasColumnType("datetime2");
 
@@ -54,6 +75,10 @@ namespace AceSchoolPortal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("house_group_id");
+
+                    b.HasIndex("Instructorsinstructor_id");
+
+                    b.HasIndex("Studentsstudent_id");
 
                     b.ToTable("HouseGroups");
                 });
@@ -64,12 +89,6 @@ namespace AceSchoolPortal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ClassGradesclass_grade_id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HouseGroupshouse_group_id")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("created_at")
                         .HasColumnType("datetime2");
@@ -88,10 +107,6 @@ namespace AceSchoolPortal.Migrations
 
                     b.HasKey("instructor_id");
 
-                    b.HasIndex("ClassGradesclass_grade_id");
-
-                    b.HasIndex("HouseGroupshouse_group_id");
-
                     b.ToTable("Instructors");
                 });
 
@@ -101,12 +116,6 @@ namespace AceSchoolPortal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ClassGradesclass_grade_id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HouseGroupshouse_group_id")
-                        .HasColumnType("int");
 
                     b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
@@ -128,10 +137,6 @@ namespace AceSchoolPortal.Migrations
 
                     b.HasKey("student_id");
 
-                    b.HasIndex("ClassGradesclass_grade_id");
-
-                    b.HasIndex("HouseGroupshouse_group_id");
-
                     b.ToTable("Students");
                 });
 
@@ -142,7 +147,7 @@ namespace AceSchoolPortal.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ClassGradesclass_grade_id")
+                    b.Property<int?>("Studentsstudent_id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("created_at")
@@ -153,7 +158,7 @@ namespace AceSchoolPortal.Migrations
 
                     b.HasKey("subject_id");
 
-                    b.HasIndex("ClassGradesclass_grade_id");
+                    b.HasIndex("Studentsstudent_id");
 
                     b.ToTable("Subjects");
                 });
@@ -192,49 +197,66 @@ namespace AceSchoolPortal.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Instructors", b =>
-                {
-                    b.HasOne("AceSchoolPortal.Data.Entities.ClassGrades", null)
-                        .WithMany("instructors")
-                        .HasForeignKey("ClassGradesclass_grade_id");
-
-                    b.HasOne("AceSchoolPortal.Data.Entities.HouseGroups", null)
-                        .WithMany("instructors")
-                        .HasForeignKey("HouseGroupshouse_group_id");
-                });
-
-            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Students", b =>
-                {
-                    b.HasOne("AceSchoolPortal.Data.Entities.ClassGrades", null)
-                        .WithMany("students")
-                        .HasForeignKey("ClassGradesclass_grade_id");
-
-                    b.HasOne("AceSchoolPortal.Data.Entities.HouseGroups", null)
-                        .WithMany("students")
-                        .HasForeignKey("HouseGroupshouse_group_id");
-                });
-
-            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Subjects", b =>
-                {
-                    b.HasOne("AceSchoolPortal.Data.Entities.ClassGrades", null)
-                        .WithMany("subjects")
-                        .HasForeignKey("ClassGradesclass_grade_id");
-                });
-
             modelBuilder.Entity("AceSchoolPortal.Data.Entities.ClassGrades", b =>
                 {
-                    b.Navigation("instructors");
+                    b.HasOne("AceSchoolPortal.Data.Entities.Instructors", "Instructors")
+                        .WithMany("ClassGrades")
+                        .HasForeignKey("Instructorsinstructor_id");
 
-                    b.Navigation("students");
+                    b.HasOne("AceSchoolPortal.Data.Entities.Students", "Students")
+                        .WithMany("ClassGrades")
+                        .HasForeignKey("Studentsstudent_id");
 
-                    b.Navigation("subjects");
+                    b.HasOne("AceSchoolPortal.Data.Entities.Subjects", "Subjects")
+                        .WithMany("ClassGrades")
+                        .HasForeignKey("Subjectssubject_id");
+
+                    b.Navigation("Instructors");
+
+                    b.Navigation("Students");
+
+                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("AceSchoolPortal.Data.Entities.HouseGroups", b =>
                 {
-                    b.Navigation("instructors");
+                    b.HasOne("AceSchoolPortal.Data.Entities.Instructors", "Instructors")
+                        .WithMany()
+                        .HasForeignKey("Instructorsinstructor_id");
 
-                    b.Navigation("students");
+                    b.HasOne("AceSchoolPortal.Data.Entities.Students", "Students")
+                        .WithMany("HouseGroups")
+                        .HasForeignKey("Studentsstudent_id");
+
+                    b.Navigation("Instructors");
+
+                    b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Subjects", b =>
+                {
+                    b.HasOne("AceSchoolPortal.Data.Entities.Students", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("Studentsstudent_id");
+                });
+
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Instructors", b =>
+                {
+                    b.Navigation("ClassGrades");
+                });
+
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Students", b =>
+                {
+                    b.Navigation("ClassGrades");
+
+                    b.Navigation("HouseGroups");
+
+                    b.Navigation("Subjects");
+                });
+
+            modelBuilder.Entity("AceSchoolPortal.Data.Entities.Subjects", b =>
+                {
+                    b.Navigation("ClassGrades");
                 });
 #pragma warning restore 612, 618
         }

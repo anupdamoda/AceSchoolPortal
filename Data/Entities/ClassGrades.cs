@@ -11,9 +11,9 @@ namespace AceSchoolPortal.Data.Entities
         public int class_grade_id { get; set; }
         public string class_grade_name { get; set; }
         public string last_name { get; set; }
-        public ICollection<Instructors> instructors { get; set; }
-        public ICollection<Students> students { get; set; }
-        public ICollection<Subjects> subjects { get; set; }
+        public virtual Students Students { get; set; }
+        public virtual Instructors Instructors { get; set; }
+        public virtual Subjects Subjects { get; set; }
         public DateTime created_at { get; set; }
 
     }

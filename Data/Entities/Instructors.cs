@@ -14,6 +14,7 @@ namespace AceSchoolPortal.Data.Entities
         public int experience { get; set; }
         public DateTime enrollment_date { get; set; }
         public DateTime created_at {get; set;}
+        public ICollection<ClassGrades> ClassGrades { get; set; }
 
     }
 }

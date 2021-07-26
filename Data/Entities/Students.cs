@@ -14,5 +14,7 @@ namespace AceSchoolPortal.Data.Entities
         public string grade { get; set; }
         public DateTime enrollment_date { get; set; }
         public string address { get; set; }
+        public virtual ICollection<ClassGrades> ClassGrades { get; set; }
+        public virtual ICollection<HouseGroups> HouseGroups { get; set; }
     }
 }
