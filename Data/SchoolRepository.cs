@@ -1,4 +1,5 @@
 ﻿using AceSchoolPortal.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace AceSchoolPortal.Data
         public IEnumerable<Students> GetAllStudents()
         {
             return _ctx.Students
-                .OrderBy(u => u.FirstName)
+                .OrderBy(u => u.first_name)
                 .ToList();
         }
 

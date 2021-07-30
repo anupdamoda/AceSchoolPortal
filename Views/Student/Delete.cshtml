@@ -13,78 +13,57 @@
     <h4>Student</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.FirstName)
+    @Html.HiddenFor(model => model.first_name)
 
     <div class="form-group">
-        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.first_name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="FathersName">Father's Name:</label>
-            <input asp-for="FathersName" type="text" class="form-control">
-            <span asp-validation-for="FathersName"></span>
+            <label asp-for="last_name">Lastname:</label>
+            <input asp-for="last_name" type="text" class="form-control">
+            <span asp-validation-for="last_name"></span>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="DOJ">Date of Joining:</label>
-            <input asp-for="DOJ" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
-            <span asp-validation-for="DOJ"></span>
+            <label asp-for="enrollment_date">Date of Joining:</label>
+            <input asp-for="enrollment_date" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
+            <span asp-validation-for="enrollment_date"></span>
+        </div>
+    </div>
+    @*<div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="ClassGradesclass_grade_id">Grade:</label>
+            <input asp-for="ClassGradesclass_grade_id" type="text" class="form-control">
+            <span asp-validation-for="ClassGradesclass_grade_id"></span>
+        </div>
+    </div>*@
+    <div class="form-group">
+        <div class="col-md-4 col-lg-6 col-xs-12">
+            <label asp-for="dob">Date of Birth:</label>
+            <input asp-for="dob" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
+            <span asp-validation-for="dob"></span>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="MothersName">Mother's Name:</label>
-            <input asp-for="MothersName" type="text" class="form-control">
-            <span asp-validation-for="MothersName"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="Grade">Grade:</label>
-            <input asp-for="Grade" type="text" class="form-control">
-            <span asp-validation-for="Grade"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="DOB">Date of Birth:</label>
-            <input asp-for="DOB" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control">
-            <span asp-validation-for="DOB"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="BloodGroup">Blood Group:</label>
-            <input asp-for="BloodGroup" type="text" class="form-control">
-            <span asp-validation-for="BloodGroup"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="EmergencyContact">Emergency Contact:</label>
-            <input asp-for="EmergencyContact" type="number" class="form-control">
-            <span asp-validation-for="EmergencyContact"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="Address">Addreses:</label>
-            <input asp-for="Address" type="text" class="form-control">
-            <span asp-validation-for="Address"></span>
+            <label asp-for="address">Addresses:</label>
+            <input asp-for="address" type="text" class="form-control">
+            <span asp-validation-for="address"></span>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-4 col-lg-6 col-xs-12">
-            <label asp-for="StudentId">StudentId:</label>
+            <label asp-for="student_id">StudentId:</label>
             <span asp-for="StudentId" type="text" class="form-control"></span>
-            <span asp-validation-for="StudentId"></span>
+            <span asp-validation-for="student_id"></span>
         </div>
     </div>
 

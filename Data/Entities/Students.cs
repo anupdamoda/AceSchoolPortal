@@ -7,15 +7,14 @@ namespace AceSchoolPortal.Data.Entities
 {
     public class Students
     {
-        public int StudentId { get; set; }
-        public string FirstName { get; set; }
-        public string FathersName { get; set; }
-        public string MothersName { get; set; }
-        public DateTime DOB { get; set; }
-        public string Grade { get; set; }
-        public DateTime DOJ { get; set; }
-        public string BloodGroup {get; set;}
-        public string Address { get; set; }
-        public string EmergencyContact { get; set; }
+        public int student_id { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public DateTime dob { get; set; }
+        public string grade { get; set; }
+        public DateTime enrollment_date { get; set; }
+        public string address { get; set; }
+        public virtual ICollection<ClassGrades> ClassGrades { get; set; }
+        public virtual ICollection<HouseGroups> HouseGroups { get; set; }
     }
 }
