@@ -35,7 +35,7 @@ namespace AceSchoolPortal.Controllers
                 var newStudent = new Students()
                 {
                     first_name = model.FirstName,
-                    last_name = model.FathersName,
+                    last_name = model.LastName,
                     enrollment_date = model.DOJ,
                     dob = model.DOB,
                     grade = model.Grade,

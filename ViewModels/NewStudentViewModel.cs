@@ -15,7 +15,7 @@ namespace AceSchoolPortal.ViewModels
         public int StudentId { get; set; }
         [Required]
         public string FirstName { get; set; }
-        public string FathersName { get; set; }
+        public string LastName { get; set; }
         [Required]
         public DateTime DOJ { get; set; }
         public string MothersName { get; set; }
