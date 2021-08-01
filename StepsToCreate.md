@@ -204,9 +204,17 @@ Go to migrations folder and verify if the new file got generated with _identity.
 _identity.cs file contains the code which makes changes to order tables and identity 
 
 Go to CLI Tools again and run command: 'dotnet ef database drop' -- very Important Step !!
+But please note that this command will delete the whole database Schema along with the data 
 next time application runs it will populate the new tables related to identity & order related table will be containing identity related details
 
- 
+you will have to run the migration commands again:
+1. dotnet ef migrations add <name>
+2. dotnet ef database update
+
+when you run the above commands:
+new tables related to identity will get generated:
+dbo.AspNetUsers, dbo.AspNetRoles, dbo.AspNetUserClaims, dbo.AspNetUser logins and other related tables
+
 # Step6: 
 Go to Data folder and go to Seeder method add the details about create Userand in the product method as well
 
