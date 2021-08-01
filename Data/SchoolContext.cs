@@ -1,15 +1,15 @@
 ﻿using AceSchoolPortal.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AceSchoolPortal.Data
 {
-    public class SchoolContext: DbContext
+    public class SchoolContext : IdentityDbContext<StoreUser>
     {
-        public SchoolContext(DbContextOptions<SchoolContext> options):base(options)
+        public SchoolContext(DbContextOptions<SchoolContext> options): base(options)
         {
 
         }

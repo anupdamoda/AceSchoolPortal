@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AceSchoolPortal.Data;
+using AceSchoolPortal.Data.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,10 +27,20 @@ namespace AceSchoolPortal
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<StoreUser, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+                //cfg.Password.RequiredLength = 5;
+                //cfg.Password.RequireNonAlphanumeric = true;
+                //cfg.Password.RequiredUniqueChars = 2;
+            })
+                .AddEntityFrameworkStores<SchoolContext>();
+
             services.AddDbContext<SchoolContext>(cfg =>
             {
                 cfg.UseSqlServer(_config.GetConnectionString("SchoolConnectionString"));
             });
+            services.AddTransient<SchoolSeeder>();
 
             services.AddScoped<ISchoolRepository, SchoolRepository>();
             services.AddControllersWithViews();
