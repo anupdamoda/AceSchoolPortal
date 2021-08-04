@@ -22,7 +22,12 @@ namespace AceSchoolPortal.Controllers
             this.db = db;
         }
 
-        public IActionResult Index()
+        public IActionResult index()
+        {
+            return View();
+        }
+
+        public IActionResult Home()
         {
             return View();
         }
