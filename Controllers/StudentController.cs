@@ -55,12 +55,19 @@ namespace AceSchoolPortal.Controllers
 
         }
 
-        public IActionResult StudentManagement()
+        public IActionResult StudentManagement(string searchString)
         {
             ViewBag.Title = "Shop";
             var results = /*from p in _context*/_repository/*.Products*/.GetAllStudents();
             //orderby p.Category
             //select p;
+
+            ViewData["CurrentFilter"] = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                results = results.Where(s => s.last_name.Contains(searchString)
+                                       || s.first_name.Contains(searchString));
+            }
 
             return View(results.ToList());
         }
