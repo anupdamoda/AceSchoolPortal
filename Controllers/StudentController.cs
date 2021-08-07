@@ -56,7 +56,6 @@ namespace AceSchoolPortal.Controllers
 
         }
 
-
         [Authorize]
         public IActionResult StudentManagement(string searchString)
 
@@ -76,6 +75,7 @@ namespace AceSchoolPortal.Controllers
             return View(results.ToList());
         }
 
+        [Authorize]
         public IActionResult Edit(int id)
         {
             //here, get the user from the database in the real application
@@ -99,6 +99,7 @@ namespace AceSchoolPortal.Controllers
             return RedirectToAction("StudentManagement");
         }
 
+        [Authorize]
         public IActionResult Delete(int id)
         {
             //here, get the student from the database in the real application
