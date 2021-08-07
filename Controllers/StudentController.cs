@@ -1,6 +1,7 @@
 ﻿using AceSchoolPortal.Data;
 using AceSchoolPortal.Data.Entities;
 using AceSchoolPortal.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -55,7 +56,10 @@ namespace AceSchoolPortal.Controllers
 
         }
 
+
+        [Authorize]
         public IActionResult StudentManagement(string searchString)
+
         {
             ViewBag.Title = "Shop";
             var results = /*from p in _context*/_repository/*.Products*/.GetAllStudents();
