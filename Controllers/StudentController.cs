@@ -1,6 +1,7 @@
 ﻿using AceSchoolPortal.Data;
 using AceSchoolPortal.Data.Entities;
 using AceSchoolPortal.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,7 @@ namespace AceSchoolPortal.Controllers
 
         }
 
+        [Authorize]
         public IActionResult StudentManagement()
         {
             ViewBag.Title = "Shop";

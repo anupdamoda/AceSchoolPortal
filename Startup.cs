@@ -60,6 +60,10 @@ namespace AceSchoolPortal
             app.UseStaticFiles();
             app.UseRouting();
 
+            // the below methods are for the Identity management and important that it comes after routing and before endpoints
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(cfg =>
             {
                 cfg.MapControllerRoute("Fallback",
