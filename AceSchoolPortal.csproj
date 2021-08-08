@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\lib\Bootstrap\" />
     <Folder Include="wwwroot\lib\jquery\" />
   </ItemGroup>
