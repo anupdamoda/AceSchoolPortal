@@ -60,7 +60,6 @@ namespace AceSchoolPortal.Controllers
         public IActionResult StudentManagement(string searchString)
 
         {
-            ViewBag.Title = "Shop";
             var results = /*from p in _context*/_repository/*.Products*/.GetAllStudents();
             //orderby p.Category
             //select p;
