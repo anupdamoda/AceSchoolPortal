@@ -64,5 +64,12 @@ namespace AceSchoolPortal.Controllers
             ModelState.AddModelError("", "Failed to Login");
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "App");
+        }
     }
     }
