@@ -65,6 +65,7 @@ namespace AceSchoolPortal.Controllers
             return View();
         }
 
+
         public IActionResult NewRegistration()
         {
 
@@ -82,6 +83,12 @@ namespace AceSchoolPortal.Controllers
                 throw new InvalidOperationException("Could not create new user in Seeder");
             }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "App");
         }
     }
     }
