@@ -16,7 +16,7 @@ namespace AceSchoolPortal.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly SignInManager<StoreUser> _signInManager;
         private readonly UserManager<StoreUser> _userManager;
-        IConfiguration _config;
+       
 
         public AccountController(ILogger<AccountController> logger,
             SignInManager<StoreUser> signInManager,
@@ -26,7 +26,7 @@ namespace AceSchoolPortal.Controllers
             _logger = logger;
             _signInManager = signInManager;
             _userManager = userManager;
-            _config = config;
+           
         }
 
         public IActionResult Login()
@@ -65,6 +65,25 @@ namespace AceSchoolPortal.Controllers
             return View();
         }
 
+
+        public IActionResult NewRegistration()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> NewRegistration(StoreUser user)
+        {
+            
+            var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
+            if (result != IdentityResult.Success)
+            {
+                throw new InvalidOperationException("Could not create new user in Seeder");
+            }
+            return View();
+        }
         [HttpGet]
         public async Task<IActionResult> Logout()
         {

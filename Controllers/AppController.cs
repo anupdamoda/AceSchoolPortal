@@ -79,8 +79,8 @@ namespace AceSchoolPortal.Controllers
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    EmailAddress = model.EmailAddress,
-                    UserName = model.EmailAddress,
+                    EmailAddress = model.Email,
+                    UserName = model.Email,
                     Password = model.Password,
                     ContactNo = model.ContactNo
                 };

@@ -15,7 +15,7 @@ namespace AceSchoolPortal.ViewModels
     public string LastName { get; set; }
 
     [EmailAddress]
-    public string EmailAddress { get; set; }
+    public string Email { get; set; }
 
     [Required]
     [EmailAddress]
