@@ -74,10 +74,10 @@ namespace AceSchoolPortal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> NewRegistration(StoreUser user)
+        public async Task<IActionResult> NewRegistration(StoreUser user, NewRegstnViewModel model)
         {
             
-            var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
+            var result = await _userManager.CreateAsync(user, model.Password);
             if (result != IdentityResult.Success)
             {
                 throw new InvalidOperationException("Could not create new user in Seeder");
