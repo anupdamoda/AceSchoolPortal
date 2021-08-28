@@ -52,10 +52,10 @@ namespace AceSchoolPortal.Controllers
 
                 if (result.Succeeded)
                 {
+                    //once signed in 
                     if (user.isEnabled == true)
                     {
-
-                        //once signed in 
+                        //once signed in and enabled
                         if (Request.Query.Keys.Contains("ReturnUrl"))
                         {
                             return Redirect(Request.Query["ReturnUrl"].First());
@@ -67,6 +67,7 @@ namespace AceSchoolPortal.Controllers
                     }
                     else
                     {
+                        //once signed in and not enabled
                         await _signInManager.SignOutAsync();
                         return RedirectToAction("NotEnabled", "App");
                     }
