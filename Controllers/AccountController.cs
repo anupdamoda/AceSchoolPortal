@@ -48,27 +48,36 @@ namespace AceSchoolPortal.Controllers
                     model.RememberMe,
                     false);
 
+                var user = await _userManager.FindByEmailAsync(model.Username);
+
                 if (result.Succeeded)
                 {
-                    //once signed in 
-                    if (Request.Query.Keys.Contains("ReturnUrl"))
+                    if (user.isEnabled == true)
                     {
-                        return Redirect(Request.Query["ReturnUrl"].First());
+
+                        //once signed in 
+                        if (Request.Query.Keys.Contains("ReturnUrl"))
+                        {
+                            return Redirect(Request.Query["ReturnUrl"].First());
+                        }
+                        else
+                        {
+                            return RedirectToAction("Home", "App");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Home", "App");
+                        await _signInManager.SignOutAsync();
+                        return RedirectToAction("NotEnabled", "App");
                     }
                 }
             }
-            ModelState.AddModelError("", "Failed to Login");
+            ModelState.AddModelError("", "Entered username or password is wrong");
             return View();
         }
 
-
         public IActionResult NewRegistration()
         {
-
             return View();
         }
 
@@ -76,7 +85,7 @@ namespace AceSchoolPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> NewRegistration(StoreUser user, NewRegstnViewModel model)
         {
-            
+            user.isEnabled = false;
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result != IdentityResult.Success)
             {
