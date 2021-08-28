@@ -31,6 +31,10 @@ namespace AceSchoolPortal.Controllers
         {
             return View();
         }
+        public IActionResult NotEnabled()
+        {
+            return View();
+        }
 
         public IActionResult NewRegistration()
         {

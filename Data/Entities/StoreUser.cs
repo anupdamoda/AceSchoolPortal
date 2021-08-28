@@ -10,5 +10,6 @@ namespace AceSchoolPortal.Data.Entities
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
+            public bool? isEnabled { get; set; }
         }
 }
