@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,9 +58,16 @@ namespace AceSchoolPortal.Controllers
         }
 
         [Authorize]
-        public IActionResult StudentManagement(string searchString)
-
+        public IActionResult StudentManagement(string searchString, int? page, string currentFilter)
         {
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
             var results = /*from p in _context*/_repository/*.Products*/.GetAllStudents();
             //orderby p.Category
             //select p;
@@ -71,7 +79,9 @@ namespace AceSchoolPortal.Controllers
                                        || s.first_name.Contains(searchString));
             }
 
-            return View(results.ToList());
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(results.ToPagedList(pageNumber,pageSize));
         }
 
         [Authorize]

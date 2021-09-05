@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <COMReference Include="{0015b4cc-edc9-3a0e-b14a-afb8f75f2a1c}">
+      <Guid>0015b4cc-edc9-3a0e-b14a-afb8f75f2a1c</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Index.html" />
   </ItemGroup>
 
@@ -18,6 +27,7 @@
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNet.Providers.Core" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
@@ -32,6 +42,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Core" Version="3.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="OdeToCode.UseNodeModules" Version="3.0.0" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+    <PackageReference Include="System.Web.Http.Common" Version="4.0.20126.16343" />
+    <PackageReference Include="System.Web.Mvc.Extensions" Version="1.1.1.2" />
   </ItemGroup>
 
 </Project>
