@@ -4,16 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Delete Student</h2>
 
 @using (Html.BeginForm())
 {
 
 <div class="form-horizontal">
-    <h4>Student</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.first_name)
+    @Html.HiddenFor(model => model.student_id)
 
     <div class="form-group">
         @Html.LabelFor(model => model.first_name, htmlAttributes: new { @class = "control-label col-md-2" })
