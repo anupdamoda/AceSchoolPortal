@@ -90,12 +90,11 @@ namespace AceSchoolPortal.Controllers
             //here, get the user from the database in the real application
             //getting a user from collection for demo purpose
             var usr = _repository.GetAllStudents().Where(s => s.student_id == id).FirstOrDefault();
-
             return View(usr);
         }
 
         [HttpPost]
-        public ActionResult Edit(Students std)
+        public IActionResult Edit(Students std)
         {
             //update user in DB using EntityFramework in real-life application
 
