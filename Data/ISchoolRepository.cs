@@ -10,6 +10,7 @@ namespace AceSchoolPortal.Data
         IList<Users> ListAllUsers();
         IEnumerable<Students> GetAllStudents();
         IEnumerable<Instructors> GetAllInstructors();
+        IEnumerable<Subjects> GetAllSubjects();
         void AddEntity(object model);
         void RemoveEntity(object model);
         bool SaveAll();
