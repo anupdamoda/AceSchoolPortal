@@ -45,6 +45,12 @@ namespace AceSchoolPortal.Data
                 .OrderBy(u => u.first_name)
                 .ToList();
         }
+        public IEnumerable<Subjects> GetAllSubjects()
+        {
+            return _ctx.Subjects
+                .OrderBy(u => u.subject_name)
+                .ToList();
+        }
 
         public IList<Users> ListAllUsers()
         {
