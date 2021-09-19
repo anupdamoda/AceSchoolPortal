@@ -11,5 +11,6 @@ namespace AceSchoolPortal.Data.Entities
         public string subject_name { get; set; }
         public ICollection<ClassGrades> ClassGrades { get; set; }
         public DateTime created_at { get; set; }
+        public DateTime updated_at { get; set; }
     }
 }

@@ -37,7 +37,10 @@ namespace AceSchoolPortal.Controllers
                 var newSubject = new Subjects()
                 {
                     subject_name = model.SubjectName,
-                    created_at = DateTime.Now
+                    // created date should be the date as created
+                    created_at = DateTime.Now,
+                    // updated date should be same as created date before it gets updated 
+                    updated_at = DateTime.Now
                 };
 
                 _repository.AddEntity(newSubject);
@@ -91,10 +94,15 @@ namespace AceSchoolPortal.Controllers
         [HttpPost]
         public IActionResult Edit(Subjects sub)
         {
-            //update user in DB using EntityFramework in real-life application
+            //update subjects in DB using EntityFramework in real-life application
 
             //update list by removing old user and adding updated user for demo purpose
             var subject = _repository.GetAllSubjects().Where(s => s.subject_id == sub.subject_id).FirstOrDefault();
+            _repository.RemoveEntity(subject);
+            // created date should remain the same
+            sub.created_at = subject.created_at;
+            // edited/updated date should be updated to current date (date of the edit)
+            sub.updated_at = DateTime.Now;
             _repository.RemoveEntity(subject);
             _repository.AddEntity(sub);
             _repository.SaveAll();
