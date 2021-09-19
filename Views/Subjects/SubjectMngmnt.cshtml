@@ -28,6 +28,7 @@
                 <tr>
                     <th> Subject Name </th>
                     <th> Created on/at </th>
+                    <th> Update on/at </th>
                     <th style="color:darkcyan"> Update </th>
                     <th style="color:darkcyan"> Delete </th>
                 </tr>
@@ -38,6 +39,7 @@
                     <tr>
                         <td>  @p.subject_name </td>
                         <td>  @p.created_at </td>
+                        <td>  @p.updated_at </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = p.subject_id })
                         </td>
